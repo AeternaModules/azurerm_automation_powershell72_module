@@ -8,7 +8,7 @@ output "automation_powershell72_modules_automation_account_id" {
 }
 output "automation_powershell72_modules_module_link" {
   description = "Map of module_link values across all automation_powershell72_modules, keyed the same as var.automation_powershell72_modules"
-  value       = { for k, v in azurerm_automation_powershell72_module.automation_powershell72_modules : k => v.module_link if v.module_link != null && length(v.module_link) > 0 }
+  value       = { for k, v in azurerm_automation_powershell72_module.automation_powershell72_modules : k => one(v.module_link) if v.module_link != null && length(v.module_link) > 0 }
 }
 output "automation_powershell72_modules_name" {
   description = "Map of name values across all automation_powershell72_modules, keyed the same as var.automation_powershell72_modules"
